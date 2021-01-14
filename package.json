@@ -1,0 +1,11 @@
+{
+  "name": "numbers-to-indonesian-currency-spell",
+  "version": "1.0.0",
+  "description": "Simple free software for converting numbers to indonesian currency spelling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bakunya",
+  "license": "MIT"
+}
