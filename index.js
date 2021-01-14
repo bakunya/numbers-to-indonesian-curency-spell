@@ -51,6 +51,8 @@ const toEjaanArray = (array) => array.map(angka => {
  */
 
 function convert(param) {
+    if (param.toString().length > 15) return "Hanya support hingga 'Trilyun'" 
+    
     const uang = Number(param).toLocaleString("id-ID")
 
     const arrayUang = uang.replace(",", ".").split(",").map(u => u === '000' ? '0' : parseInt(u, 10).toString())
