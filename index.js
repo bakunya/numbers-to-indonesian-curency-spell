@@ -51,18 +51,18 @@ const toEjaanArray = (array) => array.map(angka => {
  */
 
 function convert(param) {
-    if (param.toString().length > 15) return "Hanya support hingga 'Trilyun'" 
-    
+    if (param.toString().length > 15) return "Hanya support hingga 'Milyar'" 
+
     const numberOfParam = Number(param)
 
     /**
      * Check if is integer or float
      */
     if(numberOfParam % 1 !== 0) return "Hanya support integer desimal"
-    
+
     const uang = numberOfParam.toLocaleString("id-ID")
 
-    const arrayUang = uang.replace(",", ".").split(",").map(u => u === '000' ? '0' : parseInt(u, 10).toString())
+    const arrayUang = uang.replace(",", ".").split(".").map(u => u === '000' ? '0' : parseInt(u, 10).toString())
 
     const res = toEjaanArray(arrayUang)
 
@@ -72,7 +72,7 @@ function convert(param) {
             terbilang: res.join(" ").trim() + " " + banyak[res.length - 2]
         }
     } else {
-        const a = res.map((a, i) =>  a && `${i === res.length - 1 ? a.trim() :  a.trim() + " " + `${a && banyak[(res.length - 2) - i]}`}`)
+        const a = res.map((a, i) =>  a && `${i === res.length - 1 ? a.trim() : a.trim() + " " + `${a && banyak[(res.length - 2) - i]}`}`)
 
         return {
             nominal: `Rp.${uang}`,
