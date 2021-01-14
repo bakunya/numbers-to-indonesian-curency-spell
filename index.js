@@ -53,7 +53,7 @@ const toEjaanArray = (array) => array.map(angka => {
 function convert(param) {
     const uang = Number(param).toLocaleString("id-ID")
 
-    const arrayUang = uang.split(",").map(u => u === '000' ? '0' : parseInt(u, 10).toString())
+    const arrayUang = uang.replace(",", ".").split(",").map(u => u === '000' ? '0' : parseInt(u, 10).toString())
 
     const res = toEjaanArray(arrayUang)
 
