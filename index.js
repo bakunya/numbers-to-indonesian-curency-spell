@@ -71,5 +71,3 @@ function convert(param) {
         }
     }
 }
-
-console.log(convert(540901876))
