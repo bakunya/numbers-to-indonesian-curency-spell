@@ -28,7 +28,7 @@ const ratusan = (angka) => `${angka[0] == 1 ? "se" : ejaan[angka[0]] + " "}ratus
 const toEjaanArray = (array) => array.map(angka => {
     switch (true) {
         case angka.length === 1:
-            return `${ejaan[angka[0]] || ""}`
+            return `${angka[0] == 1 && array.length === 2 ? "se" : ejaan[angka[0]] || ""}`
         case angka.length === 2:
             return puluhan(angka)
         case angka.length === 3:
@@ -69,10 +69,10 @@ function convert(param) {
     if (parseInt(arrayUang.slice(1, arrayUang.length).join(""), 10) == 0) {
         return {
             nominal: `Rp.${uang}`,
-            terbilang: res.join(" ").trim() + " " + banyak[res.length - 2]
+            terbilang: res.join(" ").trim() + `${res[0] === "se" ? "" : " " }` + banyak[res.length - 2] + " rupiah"
         }
     } else {
-        const a = res.map((a, i) =>  a && `${i === res.length - 1 ? a.trim() : a.trim() + " " + `${a && banyak[(res.length - 2) - i]}`}`)
+        const a = res.map((a, i) =>  a && `${i === res.length - 1 ? a.trim() : a.trim() + `${res[0] === "se" ? "" : " " }` + `${a && banyak[(res.length - 2) - i]}`}`)
 
         return {
             nominal: `Rp.${uang}`,
